@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<connector>
+    <component name="ToodleDo" package="org.wso2.esb.connector" >
+        <dependency component="Folders"/>
+    </component>
+</connector>

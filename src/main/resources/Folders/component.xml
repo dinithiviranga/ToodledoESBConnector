@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="Folders" type="synapse/template">
+    <subComponents>
+        <component name="addingFolders">
+            <file>addingFolders.xml</file>
+            <description>Add folder</description>
+        </component>
+        <component name="deletingFolders">
+            <file>deletingFolders.xml</file>
+            <description>Delete folder</description>
+        </component>
+        <component name="editingFolders">
+            <file>editingFolders.xml</file>
+            <description>Edit folder</description>
+        </component>
+        <component name="retrievingFolders">
+            <file>retrievingFolders.xml</file>
+            <description>Retrieve folders</description>
+        </component>
+    </subComponents>
+</component>

@@ -1,0 +1,38 @@
+<template name="editingFolders" xmlns="http://ws.apache.org/ns/synapse">
+    <parameter name="id"  />
+    <parameter name="name"  />
+    <parameter name="private"  />
+    <parameter name="access_token" />
+    <sequence>
+        <property name="uri.var.id" expression="$func:id" />
+        <property name="uri.var.name" expression="$func:name" />
+        <property name="uri.var.private" expression="$func:private" />
+        <property name="uri.var.access_token" expression="$func:access_token" />
+
+        <header name="Content-Type" value="application/x-www-form-urlencoded" scope="transport"/>
+        <property name="messageType" value="application/x-www-form-urlencoded" scope="axis2" />
+
+        <payloadFactory media-type="xml">
+            <format>
+                <xform>
+                    <id>$1</id>
+                    <name>$2</name>
+                    <private>$3</private>
+                    <access_token>$4</access_token>
+                </xform>
+            </format>
+            <args>
+                <arg expression="$func:id" />
+                <arg expression="$func:name" />
+                <arg expression="$func:private" />
+                <arg expression="$func:access_token" />
+            </args>
+        </payloadFactory>
+        <call>
+            <endpoint>
+                <http method="post"
+                      uri-template="http://api.toodledo.com/3/folders/edit.php" />
+            </endpoint>
+        </call>
+    </sequence>
+</template>
