@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="Goals" type="synapse/template">
+    <subComponents>
+        <component name="addingGoals">
+            <file>addingGoals.xml</file>
+            <description>Add a goal to your toodledo.</description>
+        </component>
+        <component name="deletingGoals">
+            <file>deletingGoals.xml</file>
+            <description>Delete a goal from your toodledo.</description>
+        </component>
+        <component name="editingGoals">
+            <file>editingGoals.xml</file>
+            <description>Edit a goal in your toodledo.</description>
+        </component>
+        <component name="retrievingGoals">
+            <file>retrievingGoals.xml</file>
+            <description>Retrieve goals in your toodledo.</description>
+        </component>
+    </subComponents>
+</component>

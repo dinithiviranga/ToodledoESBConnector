@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template name="retrievingGoals" xmlns="http://ws.apache.org/ns/synapse">
+
+    <parameter name="access_token" description="The token to access the backend services."/>
+    <sequence>
+        <property name="uri.var.access_token" expression="$func:access_token"/>
+
+        <!-- Building the URL with the parameters for the API method -->
+        <filter xpath="not(get-property('uri.var.access_token') = '' )">
+            <then>
+                <property name="uri.var.apiParameter"
+                          expression="fn:get-property('uri.var.access_token')"/>
+            </then>
+        </filter>
+        <payloadFactory media-type="xml">
+            <format>
+                <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+                    <soapenv:Header/>
+                    <soapenv:Body/>
+                </soapenv:Envelope>
+            </format>
+            <args/>
+        </payloadFactory>
+        <call>
+            <endpoint>
+                <http method="GET"
+                      uri-template="http://api.toodledo.com/3/goals/get.php?access_token={uri.var.apiParameter}"/>
+            </endpoint>
+        </call>
+
+    </sequence>
+
+</template>
