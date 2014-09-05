@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="Location" type="synapse/template">
+    <subComponents>
+       <component name="retrievingLocation">
+            <file>retrievingLocation.xml</file>
+            <description>Retrieve location</description>
+        </component>
+        <component name="addingLocation">
+            <file>addingLocation.xml</file>
+            <description>Add location</description>
+        </component>
+        <component name="editingLocation">
+            <file>editingLocation.xml</file>
+            <description>Edit location</description>
+        </component>
+        <component name="deletingLocation">
+            <file>deletingLocation.xml</file>
+            <description>Delete location</description>
+        </component>
+    </subComponents>
+</component>

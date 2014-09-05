@@ -1,0 +1,37 @@
+<template name="addingLocation" xmlns="http://ws.apache.org/ns/synapse">
+    <parameter name="name"  />
+    <parameter name="lat"  />
+    <parameter name="lon"  />
+    <parameter name="access_token" />
+    <sequence>
+        <property name="uri.var.name" expression="$func:name" />
+        <property name="uri.var.lat" expression="$func:lat" />
+        <property name="uri.var.lon" expression="$func:lon" />
+        <property name="uri.var.access_token" expression="$func:access_token" />
+        <header name="Content-Type" value="application/x-www-form-urlencoded" scope="transport"/>
+        <property name="messageType" value="application/x-www-form-urlencoded" scope="axis2" />
+
+        <payloadFactory media-type="xml">
+            <format>
+                <xform>
+                    <name>$1</name>
+                    <lat>$2</lat>
+                    <lon>$3</lon>
+                    <access_token>$4</access_token>
+                </xform>
+            </format>
+            <args>
+                <arg expression="$func:name" />
+                <arg expression="$func:lat" />
+                <arg expression="$func:lon" />
+                <arg expression="$func:access_token" />
+            </args>
+        </payloadFactory>
+        <call>
+            <endpoint>
+                <http method="post"
+                      uri-template="http://api.toodledo.com/3/locations/add.php" />
+            </endpoint>
+        </call>
+    </sequence>
+</template>
