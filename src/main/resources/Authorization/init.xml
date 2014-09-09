@@ -1,0 +1,15 @@
+<template xmlns="http://ws.apache.org/ns/synapse" name="init">
+    <parameter name="access_token" description="access Token for the Authorization." />
+    <property name="clientId"  />
+    <property name="secret"/>
+
+    <sequence>
+        <property name="access_token" expression="$func:access_token" />
+        <property expression="$func:clientId" name="toodleDo.clientId" type="STRING" />
+        <property expression="$func:secret" name="toodleDo.secret" type="STRING" />
+
+        <!-- Build the authorization header to authorize the request -->
+       <!-- <header name="Authorization" expression="fn:concat('Bearer ',get-property('access_token'))"
+                scope="transport" />-->
+    </sequence>
+</template>
