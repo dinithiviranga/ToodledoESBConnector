@@ -24,7 +24,7 @@
 
         <property name="temp" expression="fn:concat('toodledoapp123',':','api54069618e004f')" />
         <property name="Authorization" expression="fn:concat('Basic ', base64Encode(get-property('temp')))" scope="transport"  />
-        <!--<header name="Authorization"  expression="fn:concat('Basic ', base64Encode(  fn:concat(  toodleTest ,  ':' , api5405f1d602ce5  ))  )" scope="transport"   action="set"/>-->
+
 
         <property name="messageType" value="application/x-www-form-urlencoded" scope="axis2" />
         <property name="DISABLE_CHUNKING" value="true" scope="axis2" />
