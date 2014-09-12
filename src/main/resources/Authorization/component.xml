@@ -9,5 +9,9 @@
             <file>init.xml</file>
             <description>Configuration files.</description>
         </component>
+        <component name="getRefreshToken">
+            <file>refreshToken.xml</file>
+            <description>Configuration files.</description>
+        </component>
     </subComponents>
 </component>

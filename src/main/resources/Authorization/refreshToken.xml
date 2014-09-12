@@ -1,8 +1,8 @@
-<template name="getAccessToken" xmlns="http://ws.apache.org/ns/synapse">
+<template name="getRefreshToken" xmlns="http://ws.apache.org/ns/synapse">
 
     <!-- Required parameters -->
 
-    <parameter name="code"
+    <parameter name="refresh_token"
                description="The authorization code that your got from the authorization step." />
 
     <!-- Optional parameters -->
@@ -24,23 +24,26 @@
 
         <property name="temp" expression="fn:concat('toodledoapp123',':','api54069618e004f')" />
         <property name="Authorization" expression="fn:concat('Basic ', base64Encode(get-property('temp')))" scope="transport"  />
-        <!--<header name="Authorization"  expression="fn:concat('Basic ', base64Encode(  fn:concat(  toodleTest ,  ':' , api5405f1d602ce5  ))  )" scope="transport"   action="set"/>-->
+
 
         <property name="messageType" value="application/x-www-form-urlencoded" scope="axis2" />
         <property name="DISABLE_CHUNKING" value="true" scope="axis2" />
 
-        <property name="uri.var.code" expression="$func:code" />
+        <property name="uri.var.refresh_token" expression="$func:refresh_token" />
         <property name="uri.var.vers" expression="$func:vers" />
         <property name="uri.var.os" expression="$func:os" />
         <property name="uri.var.device" expression="$func:device" />
 
+        <log level="custom">
+            <property name="payload" value="rajee"/>
+        </log>
 
         <payloadFactory media-type="xml">
 
             <format>
                 <xform>
-                    <grant_type>authorization_code</grant_type>
-                    <code>$1</code>
+                    <grant_type>refresh_token</grant_type>
+                    <refresh_token>$1</refresh_token>
                     <vers>$2</vers>
                     <os>$3</os>
                     <device>$4</device>
@@ -48,7 +51,7 @@
             </format>
 
             <args>
-                <arg expression="get-property('uri.var.code')" />
+                <arg expression="get-property('uri.var.refresh_token')" />
                 <arg expression="get-property('uri.var.vers')" />
                 <arg expression="get-property('uri.var.os')" />
                 <arg expression="get-property('uri.var.device')" />
@@ -64,6 +67,7 @@
         <filter source="$axis2:HTTP_SC" regex="[2][0][0]">
             <then>
                 <property name="access_token" expression="json-eval($.access_token)" />
+                <!--<header name="Authorization" expression="fn:concat('Bearer ',get-property('access_token'))" scope="transport" />-->
             </then>
         </filter>
 
