@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="Tasks" type="synapse/template">
+    <subComponents>
+        <component name="addingTasks">
+            <file>addingTasks.xml</file>
+            <description>Adding tasks to the toodledo</description>
+        </component>
+        <component name="editingTasks">
+            <file>editingTasks.xml</file>
+            <description>Editing tasks from the toodledo</description>
+        </component>
+        <component name="deletingTasks">
+            <file>deletingTasks.xml</file>
+            <description>Deleting tasks from the toodledo</description>
+        </component>
+        <component name="retrievingTasks">
+            <file>retrievingTasks.xml</file>
+            <description>Retrieving tasks from the toodledo</description>
+        </component>
+    </subComponents>
+</component>
