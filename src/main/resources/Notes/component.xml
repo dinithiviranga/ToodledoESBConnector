@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="Notes" type="synapse/template">
+    <subComponents>
+        <component name="addingNotes">
+            <file>addingNotes.xml</file>
+            <description>Add Notes</description>
+        </component>
+
+        <component name="editingNotes">
+            <file>editNotes.xml</file>
+            <description>Edit Notes</description>
+        </component>
+
+        <component name="deletingNotes">
+            <file>deletingNotes.xml</file>
+            <description>Delete Notes</description>
+        </component>
+
+        <component name="retrievingNotes">
+            <file>retrievingNotes.xml</file>
+            <description>Get Notes</description>
+        </component>
+    </subComponents>
+</component>
