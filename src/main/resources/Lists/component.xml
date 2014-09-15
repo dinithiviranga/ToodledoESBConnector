@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="Lists" type="synapse/template">
+    <subComponents>
+        <component name="addinglists">
+            <file>addingLists.xml</file>
+            <description>Add Lists</description>
+        </component>
+
+        <component name="editingLists">
+            <file>editingLists.xml</file>
+            <description>Edit Lists</description>
+        </component>
+
+        <component name="deletingLists">
+            <file>deletingLists.xml</file>
+            <description>Delete lists</description>
+        </component>
+
+        <component name="retrievingLists">
+            <file>retrievingLists.xml</file>
+            <description>Get List</description>
+        </component>
+    </subComponents>
+</component>
