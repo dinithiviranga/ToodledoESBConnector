@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template name="retrievingOutlines" xmlns="http://ws.apache.org/ns/synapse">
+
+    <parameter name="access_token" description="The token to access the backend services."/>
+    <parameter name="before" description="A GMT unix timestamp. Used to find tasks with a modified date and time before this date and time."/>
+    <parameter name="after" description="A GMT unix timestamp. Used to find tasks with a modified date and time after this date and time."/>
+    <parameter name="id" description="The id number of the task that you want to fetch. "/>
+    <parameter name="start" description="The number of records that you want to skip before printing results. "/>
+    <parameter name="num" description="The number of records to go through until output is stopped."/>
+
+    <sequence>
+        <property name="uri.var.access_token" expression="$func:access_token"/>
+        <property name="uri.var.before" expression="$func:before"/>
+        <property name="uri.var.after" expression="$func:after"/>
+        <property name="uri.var.id" expression="$func:id"/>
+        <property name="uri.var.start" expression="$func:start"/>
+        <property name="uri.var.num" expression="$func:num"/>
+
+        <!-- Adding mandatory parameters -->
+        <filter xpath="not(get-property('uri.var.access_token') = '' )">
+            <then>
+                <property name="uri.var.apiParameter"
+                          expression="fn:get-property('uri.var.access_token')"/>
+            </then>
+        </filter>
+
+        <!--Adding optional parameters.-->
+        <filter xpath="(not(get-property('uri.var.before') = '' ))">
+            <then>
+                <property name="uri.var.apiParameter" expression="fn:concat(get-property('uri.var.apiParameter'),'&amp;before=', get-property('uri.var.before'))"/>
+            </then>
+        </filter>
+        <filter xpath="(not(get-property('uri.var.after') = '' ))">
+            <then>
+                <property name="uri.var.apiParameter" expression="fn:concat(get-property('uri.var.apiParameter'),'&amp;after=', get-property('uri.var.after'))"/>
+            </then>
+        </filter>
+        <filter xpath="(not(get-property('uri.var.id') = '' ))">
+            <then>
+                <property name="uri.var.apiParameter" expression="fn:concat(get-property('uri.var.apiParameter'),'&amp;id=', get-property('uri.var.id'))"/>
+            </then>
+        </filter>
+        <filter xpath="(not(get-property('uri.var.start') = '' ))">
+            <then>
+                <property name="uri.var.apiParameter" expression="fn:concat(get-property('uri.var.apiParameter'),'&amp;start=', get-property('uri.var.start'))"/>
+            </then>
+        </filter>
+        <filter xpath="(not(get-property('uri.var.num') = '' ))">
+            <then>
+                <property name="uri.var.apiParameter" expression="fn:concat(get-property('uri.var.apiParameter'),'&amp;num=', get-property('uri.var.num'))"/>
+            </then>
+        </filter>
+
+        <payloadFactory media-type="xml">
+            <format>
+                <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+                    <soapenv:Header/>
+                    <soapenv:Body/>
+                </soapenv:Envelope>
+            </format>
+            <args/>
+        </payloadFactory>
+
+        <log level="custom">
+            <property name="apiParameter=" expression="get-property('uri.var.apiParameter')"/>
+        </log>
+
+        <call>
+            <endpoint>
+                <http method="GET" uri-template="http://api.toodledo.com/3/outlines/get.php?access_token={uri.var.apiParameter}"/>
+            </endpoint>
+        </call>
+    </sequence>
+
+</template>

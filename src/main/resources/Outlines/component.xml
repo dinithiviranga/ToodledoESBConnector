@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="Outlines" type="synapse/template">
+    <subComponents>
+        <component name="addingOutlines">
+            <file>addingOutlines.xml</file>
+            <description>Add outlines to the toodledo</description>
+        </component>
+        <component name="editingOutlines">
+            <file>editingOutlines.xml</file>
+            <description>Editing outlines from the toodledo</description>
+        </component>
+        <component name="deletingOutlines">
+            <file>deletingOutlines.xml</file>
+            <description>Deleting outlines from the toodledo</description>
+        </component>
+        <component name="retrievingOutlines">
+            <file>retrievingOutlines.xml</file>
+            <description>Retrieving outlines from the toodledo</description>
+        </component>
+    </subComponents>
+</component>
