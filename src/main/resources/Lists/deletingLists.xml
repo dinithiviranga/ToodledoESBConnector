@@ -1,0 +1,34 @@
+<template name="deletingLists" xmlns="http://ws.apache.org/ns/synapse">
+    <parameter name="access_token" />
+    <parameter name="lists"  />
+
+    <sequence>
+        <property name="uri.var.access_token" expression="$func:access_token" />
+        <property name="uri.var.lists" expression="$func:lists" />
+
+
+        <header name="Content-Type" value="application/x-www-form-urlencoded" scope="transport"/>
+        <property name="messageType" value="application/x-www-form-urlencoded" scope="axis2" />
+
+
+        <payloadFactory>
+            <format>
+                <xform>
+                    <access_token>$1</access_token>
+                    <lists>$2</lists>
+                </xform>
+            </format>
+            <args>
+                <arg expression="$func:access_token" />
+                <arg expression="$func:lists" />
+            </args>
+        </payloadFactory>
+
+        <call>
+            <endpoint>
+                <http method="post"
+                      uri-template="http://api.toodledo.com/3/lists/delete.php" />
+            </endpoint>
+        </call>
+    </sequence>
+</template>
