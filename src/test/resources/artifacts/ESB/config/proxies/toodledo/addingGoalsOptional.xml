@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy xmlns="http://ws.apache.org/ns/synapse"
+       name="addingGoalsOptional"
+       transports="https http"
+       startOnLoad="true"
+       trace="disable">
+    <description/>
+    <target>
+        <inSequence>
+            <property name="name" expression="json-eval($.name)"/>
+            <property name="level" expression="json-eval($.level)"/>
+            <property name="contributes" expression="json-eval($.contributes)"/>
+            <property name="private" expression="json-eval($.private)"/>
+            <property name="note" expression="json-eval($.note)"/>
+            <property name="access_token" expression="json-eval($.access_token)"/>
+            <ToodleDo.addingGoals>
+                <name>{$ctx:name}</name>
+                <level>{$ctx:level}</level>
+                <contributes>{$ctx:contributes}</contributes>
+                <private>{$ctx:private}</private>
+                <note>{$ctx:note}</note>
+                <access_token>{$ctx:access_token}</access_token>
+            </ToodleDo.addingGoals>
+            <respond/>
+        </inSequence>
+        <outSequence>
+            <log/>
+            <send/>
+        </outSequence>
+    </target>
+</proxy>

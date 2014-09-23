@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy xmlns="http://ws.apache.org/ns/synapse"
+       name="addingRows"
+       transports="https http"
+       startOnLoad="true"
+       trace="disable">
+   <description/>
+   <target>
+      <inSequence>
+         <property name="access_token" expression="//access_token/text()"/>
+         <property name="rows" expression="//rows/text()"/>
+         <ToodleDo.addingRows>
+            <access_token>{$ctx:access_token}</access_token>
+            <rows>{$ctx:rows}</rows>
+         </ToodleDo.addingRows>
+         <respond/>
+      </inSequence>
+      <outSequence>
+         <log/>
+         <send/>
+      </outSequence>
+   </target>
+</proxy>

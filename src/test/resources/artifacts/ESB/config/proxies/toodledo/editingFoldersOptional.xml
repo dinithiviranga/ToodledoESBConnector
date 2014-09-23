@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy xmlns="http://ws.apache.org/ns/synapse"
+       name="editingFoldersOptional"
+       transports="https http"
+       startOnLoad="true"
+       trace="disable">
+    <description/>
+    <target>
+        <inSequence>
+            <property name="id" expression="json-eval($.id)"/>
+            <property name="name" expression="json-eval($.name)"/>
+            <property name="private" expression="json-eval($.private)"/>
+            <property name="archived" expression="json-eval($.archived)"/>
+            <property name="access_token" expression="json-eval($.access_token)"/>
+            <ToodleDo.editingFolders>
+                <id>{$ctx:id}</id>
+                <name>{$ctx:name}</name>
+                <private>{$ctx:private}</private>
+                <archived>{$ctx:archived}</archived>
+                <access_token>{$ctx:access_token}</access_token>
+            </ToodleDo.editingFolders>
+            <respond/>
+        </inSequence>
+        <outSequence>
+            <log/>
+            <send/>
+        </outSequence>
+    </target>
+</proxy>
