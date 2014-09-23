@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy xmlns="http://ws.apache.org/ns/synapse"
+       name="deletingLists"
+       transports="https http"
+       startOnLoad="true"
+       trace="disable">
+   <description/>
+   <target>
+      <inSequence>
+         <property name="access_token" expression="//access_token/text()"/>
+         <property name="lists" expression="//lists/text()"/>
+         <ToodleDo.deletingLists>
+            <access_token>{$ctx:access_token}</access_token>
+            <lists>{$ctx:lists}</lists>
+         </ToodleDo.deletingLists>
+         <respond/>
+      </inSequence>
+      <outSequence>
+         <log/>
+         <send/>
+      </outSequence>
+   </target>
+</proxy>
