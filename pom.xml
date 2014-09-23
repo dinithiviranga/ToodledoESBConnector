@@ -248,8 +248,6 @@
                                 <descriptor>src/main/assembly/assemble-connector.xml
                                 </descriptor>
                             </descriptors>
-
-
                         </configuration>
                     </execution>
                 </executions>

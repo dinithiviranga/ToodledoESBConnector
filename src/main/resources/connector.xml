@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <connector>
     <component name="ToodleDo" package="org.wso2.esb.connector" >
+        <dependency component="Authorization"/>
+        <dependency component="Context"/>
         <dependency component="Folders"/>
+        <dependency component="Goals"/>
+        <dependency component="Lists"/>
+        <dependency component="Location"/>
+        <dependency component="Notes"/>
+        <dependency component="Tasks"/>
+        <dependency component="Outlines"/>
     </component>
 </connector>

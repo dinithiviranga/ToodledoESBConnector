@@ -1,6 +1,11 @@
 <template name="editingGoals" xmlns="http://ws.apache.org/ns/synapse">
     <parameter name="id"  />
     <parameter name="name"  />
+    <parameter name="level" />
+    <parameter name="contributes"  />
+    <parameter name="archived"  />
+    <parameter name="private" />
+    <parameter name="note"  />
     <parameter name="access_token" />
     <sequence>
         <property name="uri.var.id" expression="$func:id" />
@@ -10,17 +15,53 @@
         <header name="Content-Type" value="application/x-www-form-urlencoded" scope="transport"/>
         <property name="messageType" value="application/x-www-form-urlencoded" scope="axis2" />
 
+        <filter xpath="(not(get-property('uri.var.level') = ''))">
+            <then>
+                <property name="uri.var.level" expression="$func:level" />
+            </then>
+        </filter>
+        <filter xpath="(not(get-property('uri.var.contributes') = ''))">
+            <then>
+                <property name="uri.var.contributes" expression="$func:contributes" />
+            </then>
+        </filter>
+        <filter xpath="(not(get-property('uri.var.archived') = ''))">
+            <then>
+                <property name="uri.var.archived" expression="$func:archived" />
+            </then>
+        </filter>
+        <filter xpath="(not(get-property('uri.var.private') = ''))">
+            <then>
+                <property name="uri.var.private" expression="$func:private" />
+            </then>
+        </filter>
+        <filter xpath="(not(get-property('uri.var.note') = ''))">
+            <then>
+                <property name="uri.var.note" expression="$func:note" />
+            </then>
+        </filter>
+
         <payloadFactory media-type="xml">
             <format>
                 <xform>
                     <id>$1</id>
                     <name>$2</name>
-                    <access_token>$3</access_token>
+                    <level>$3</level>
+                    <contributes>$4</contributes>
+                    <archived>$5</archived>
+                    <private>$6</private>
+                    <note>$7</note>
+                    <access_token>$8</access_token>
                 </xform>
             </format>
             <args>
                 <arg expression="$func:id" />
                 <arg expression="$func:name" />
+                <arg expression="$func:level" />
+                <arg expression="$func:contributes" />
+                <arg expression="$func:archived" />
+                <arg expression="$func:private" />
+                <arg expression="$func:note" />
                 <arg expression="$func:access_token" />
             </args>
         </payloadFactory>
