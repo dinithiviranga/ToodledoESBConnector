@@ -196,7 +196,7 @@
                             <goal>attached</goal>
                         </goals>
                         <configuration>
-                            <finalName>ToodleDo</finalName>
+                            <finalName>toodledo-1.0.0</finalName>
                             <appendAssemblyId>true</appendAssemblyId>
                             <filters>
                                 <filter>${basedir}/src/main/assembly/filter.properties</filter>

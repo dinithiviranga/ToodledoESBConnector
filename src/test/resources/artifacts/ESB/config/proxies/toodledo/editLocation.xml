@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy xmlns="http://ws.apache.org/ns/synapse"
+       name="editLocation"
+       transports="https http"
+       startOnLoad="true"
+       trace="disable">
+   <description/>
+   <target>
+      <inSequence>
+         <property name="id" expression="json-eval($.id)"/>
+         <property name="name" expression="json-eval($.name)"/>
+         <property name="description" expression="json-eval($.description)"/>
+         <property name="lat" expression="json-eval($.lat)"/>
+         <property name="lon" expression="json-eval($.lon)"/>
+         <property name="access_token" expression="json-eval($.access_token)"/>
+         <ToodleDo.editingLocation>
+            <id>{$ctx:id}</id>
+            <name>{$ctx:name}</name>
+            <description>{$ctx:description}</description>
+            <lat>{$ctx:lat}</lat>
+            <lon>{$ctx:lon}</lon>
+            <access_token>{$ctx:access_token}</access_token>
+         </ToodleDo.editingLocation>
+         <respond/>
+      </inSequence>
+      <outSequence>
+         <log/>
+         <send/>
+      </outSequence>
+   </target>
+</proxy>

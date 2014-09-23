@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy xmlns="http://ws.apache.org/ns/synapse"
+       name="retrievingList"
+       transports="https http"
+       startOnLoad="true"
+       trace="disable">
+   <description/>
+   <target>
+      <inSequence>
+         <property name="access_token" expression="json-eval($access_token)"/>
+          <property name="before" expression="json-eval($before)"/>
+          <property name="after" expression="json-eval($after)"/>
+          <property name="id" expression="json-eval($id)"/>
+          <property name="start" expression="json-eval($start)"/>
+          <property name="num" expression="json-eval($num)"/>
+         <ToodleDo.retrievingLists>
+            <access_token>{$ctx:access_token}</access_token>
+            <before>{$ctx:before}</before>
+            <after>{$ctx:after}</after>
+            <id>{$ctx:id}</id>
+            <start>{$ctx:start}</start>
+            <num>{$ctx:num}</num>
+         </ToodleDo.retrievingLists>
+         <respond/>
+      </inSequence>
+      <outSequence>
+         <log/>
+         <send/>
+      </outSequence>
+   </target>
+</proxy>
