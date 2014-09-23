@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <connector>
     <component name="ToodleDo" package="org.wso2.esb.connector" >
+        <dependency component="Authorization"/>
+        <dependency component="Context"/>
         <dependency component="Folders"/>
+<<<<<<< HEAD
+        <dependency component="Goals"/>
+        <dependency component="Lists"/>
+        <dependency component="Location"/>
+        <dependency component="Notes"/>
+        <dependency component="Tasks"/>
+        <dependency component="Outlines"/>
+    </component>
+</connector>
+=======
         <dependency component="Context"/>
         <dependency component="Location"/>
         <dependency component="Goals"/>
@@ -15,3 +27,4 @@
     </component>
     <icon>icon/icon-twitter-small.png</icon>
 </connector>
+>>>>>>> 2592dff589eda2287f8884d077d10ebbc56309c0

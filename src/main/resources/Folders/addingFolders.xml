@@ -7,15 +7,23 @@
         <header name="Content-Type" value="application/x-www-form-urlencoded" scope="transport"/>
         <property name="messageType" value="application/x-www-form-urlencoded" scope="axis2" />
 
+        <filter xpath="(not(get-property('uri.var.private') = ''))">
+            <then>
+                <property name="uri.var.private" expression="$func:private" />
+            </then>
+        </filter>
+
         <payloadFactory media-type="xml">
             <format>
                 <xform>
                     <name>$1</name>
-                    <access_token>$2</access_token>
+                    <private>$2</private>
+                    <access_token>$3</access_token>
                 </xform>
             </format>
             <args>
                 <arg expression="$func:name" />
+                <arg expression="$func:private" />
                 <arg expression="$func:access_token" />
             </args>
         </payloadFactory>

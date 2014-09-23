@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy xmlns="http://ws.apache.org/ns/synapse"
+       name="addingFoldersOptional"
+       transports="https,http"
+       statistics="disable"
+       trace="disable"
+       startOnLoad="true">
+    <target>
+        <inSequence>
+            <property name="name" expression="json-eval($.name)"/>
+            <property name="private" expression="json-eval($.private)"/>
+            <property name="access_token" expression="json-eval($.access_token)"/>
+
+            <ToodleDo.addingFolders>
+                <name>{$ctx:name}</name>
+                <name>{$ctx:private}</name>
+                <access_token>{$ctx:access_token}</access_token>
+            </ToodleDo.addingFolders>
+            <respond/>
+        </inSequence>
+        <outSequence>
+            <log/>
+            <send/>
+        </outSequence>
+    </target>
+    <description/>
+</proxy>

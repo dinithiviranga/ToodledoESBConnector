@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy xmlns="http://ws.apache.org/ns/synapse"
+       name="retrievingTasks"
+       transports="https http"
+       startOnLoad="true"
+       trace="disable">
+    <description/>
+    <target>
+        <inSequence>
+            <property name="access_token" expression="json-eval($access_token)"/>
+            <ToodleDo.retrievingTasks>
+                <access_token>{$ctx:access_token}</access_token>
+            </ToodleDo.retrievingTasks>
+            <respond/>
+        </inSequence>
+        <outSequence>
+            <log/>
+            <send/>
+        </outSequence>
+    </target>
+</proxy>

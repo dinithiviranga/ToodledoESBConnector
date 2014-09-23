@@ -22,7 +22,7 @@
         <property expression="$func:clientId" name="toodleDo.clientId" type="STRING" />
         <property expression="$func:secret" name="toodleDo.secret" type="STRING" />
 
-        <property name="temp" expression="fn:concat('toodledoapp123',':','api54069618e004f')" />
+        <property name="temp" expression="fn:concat('toodleTest',':','api5405f1d602ce5')" />
         <property name="Authorization" expression="fn:concat('Basic ', base64Encode(get-property('temp')))" scope="transport"  />
         <!--<header name="Authorization"  expression="fn:concat('Basic ', base64Encode(  fn:concat(  toodleTest ,  ':' , api5405f1d602ce5  ))  )" scope="transport"   action="set"/>-->
 

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy xmlns="http://ws.apache.org/ns/synapse"
+       name="editingOutlines"
+       transports="https,http"
+       statistics="disable"
+       trace="disable"
+       startOnLoad="true">
+    <target>
+        <inSequence>
+            <property name="access_token" expression="//access_token/text()"/>
+            <property name="outlines" expression="//outlines/text()"/>
+            <ToodleDo.editingOutlines>
+                <access_token>{$ctx:access_token}</access_token>
+                <outlines>{$ctx:outlines}</outlines>
+            </ToodleDo.editingOutlines>
+            <respond/>
+        </inSequence>
+        <outSequence>
+            <log/>
+            <send/>
+        </outSequence>
+    </target>
+    <description/>
+</proxy>
