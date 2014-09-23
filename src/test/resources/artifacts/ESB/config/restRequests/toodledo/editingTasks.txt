@@ -1,0 +1,5 @@
+{
+    "access_token":"d9eb476c68fa21c3c5279b60282ec10bfc418e54",
+    "tasks":[{"id":"31675410","title":"My Task"},{"id":"31675408","title":"AnotherTask","star":"1"}],
+    "fields":"folder,star"
+}
