@@ -1,10 +1,33 @@
 <template name="editingLocation" xmlns="http://ws.apache.org/ns/synapse">
-    <parameter name="id"  />
-    <parameter name="name"  />
-    <parameter name="access_token" />
+    <parameter name="id" description="Id of a location" />
+    <parameter name="name" description="Location/editingLocation.xml:3" />
+    <parameter name="description" description="A brief description of a location"/>
+    <parameter name="lat" description="the latitude of a location"/>
+    <parameter name="lon" description="the longitude of a location"/>
+    <parameter name="access_token" description="The token to access the backend services" />
     <sequence>
         <property name="uri.var.id" expression="$func:id" />
-        <property name="uri.var.name" expression="$func:name" />
+        <filter xpath="(not(get-property('uri.var.private') = '' or (not(string(get-property('uri.var.private'))))))">
+            <then>
+                <property name="uri.var.name" expression="$func:name" />
+            </then>
+        </filter>
+        <filter xpath="(not(get-property('uri.var.description') = '' or (not(string(get-property('uri.var.description'))))))">
+            <then>
+                <property name="uri.var.description" expression="$func:description" />
+            </then>
+        </filter>
+        <filter xpath="(not(get-property('uri.var.lat') = '' or (not(string(get-property('uri.var.lat'))))))">
+            <then>
+                <property name="uri.var.lat" expression="$func:lat" />
+            </then>
+        </filter>
+        <filter xpath="(not(get-property('uri.var.lon') = '' or (not(string(get-property('uri.var.lon'))))))">
+            <then>
+                <property name="uri.var.lon" expression="$func:lon" />
+            </then>
+        </filter>
+
         <property name="uri.var.access_token" expression="$func:access_token" />
         <header name="Content-Type" value="application/x-www-form-urlencoded" scope="transport"/>
         <property name="messageType" value="application/x-www-form-urlencoded" scope="axis2" />
@@ -14,12 +37,18 @@
                 <xform>
                     <id>$1</id>
                     <name>$2</name>
-                    <access_token>$3</access_token>
+                    <description>$3</description>
+                    <lat>$4</lat>
+                    <lon>$5</lon>
+                    <access_token>$6</access_token>
                 </xform>
             </format>
             <args>
                 <arg expression="$func:id" />
                 <arg expression="$func:name" />
+                <arg expression="$func:description" />
+                <arg expression="$func:lat" />
+                <arg expression="$func:lon" />
                 <arg expression="$func:access_token" />
             </args>
         </payloadFactory>

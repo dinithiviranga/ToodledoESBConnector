@@ -1,8 +1,14 @@
 <template xmlns="http://ws.apache.org/ns/synapse" name="init">
     <parameter name="accessToken" description="Access Token for the OAuth Authorization."/>
     <sequence>
+<<<<<<< HEAD
         <property name="access_token" expression="$func:access_token"/>
         <property name="refresh_token" expression="$func:refresh_token"/>
+=======
+        <!--<property name="access_token" expression="$func:access_token" />-->
+        <property expression="$func:clientId" name="toodleDo.clientId" type="STRING" />
+        <property expression="$func:secret" name="toodleDo.secret" type="STRING" />
+>>>>>>> 2592dff589eda2287f8884d077d10ebbc56309c0
 
         <!-- Build the authorization header to authorize the request -->
         <header name="Authorization" expression="fn:concat('Bearer ',get-property('access_token'))"

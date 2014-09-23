@@ -4,6 +4,7 @@
         <dependency component="Authorization"/>
         <dependency component="Context"/>
         <dependency component="Folders"/>
+<<<<<<< HEAD
         <dependency component="Goals"/>
         <dependency component="Lists"/>
         <dependency component="Location"/>
@@ -12,3 +13,18 @@
         <dependency component="Outlines"/>
     </component>
 </connector>
+=======
+        <dependency component="Context"/>
+        <dependency component="Location"/>
+        <dependency component="Goals"/>
+        <dependency component="Notes"/>
+        <dependency component="Authorization"/>
+        <dependency component="Tasks"/>
+        <dependency component="Lists"/>
+        <dependency component="Rows"/>
+        <dependency component="Outlines"/>
+
+    </component>
+    <icon>icon/icon-twitter-small.png</icon>
+</connector>
+>>>>>>> 2592dff589eda2287f8884d077d10ebbc56309c0

@@ -61,9 +61,15 @@
 
         <filter source="$axis2:HTTP_SC" regex="[2][0][0]">
             <then>
+<<<<<<< HEAD
                 <property name="uri.var.access_token" expression="json-eval($.access_token)" />
                 <property name="uri.var.refresh_token" expression="json-eval($.refresh_token)" />
                 <header name="Authorization" expression="fn:concat('Bearer ',get-property('access_token'))" scope="transport" />
+=======
+                <property name="access_token" expression="json-eval($.access_token)" />
+                <property name="refresh_token" expression="json-eval($.refresh_token)" />
+                <!--<header name="Authorization" expression="fn:concat('Bearer ',get-property('access_token'))" scope="transport" />-->
+>>>>>>> 2592dff589eda2287f8884d077d10ebbc56309c0
             </then>
         </filter>
 

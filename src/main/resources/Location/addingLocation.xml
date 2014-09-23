@@ -1,12 +1,27 @@
 <template name="addingLocation" xmlns="http://ws.apache.org/ns/synapse">
-    <parameter name="name"  />
-    <parameter name="lat"  />
-    <parameter name="lon"  />
-    <parameter name="access_token" />
+    <parameter name="name" description="name of a location" />
+    <parameter name="description" description="A brief description of a location"/>
+    <parameter name="lat" description="the latitude of a location" />
+    <parameter name="lon" description="the longitude of a location" />
+    <parameter name="access_token" description="The token to access the backend services"/>
     <sequence>
         <property name="uri.var.name" expression="$func:name" />
-        <property name="uri.var.lat" expression="$func:lat" />
-        <property name="uri.var.lon" expression="$func:lon" />
+        <filter xpath="(not(get-property('uri.var.description') = '' or (not(string(get-property('uri.var.description'))))))">
+            <then>
+                <property name="uri.var.description" expression="$func:description" />
+            </then>
+        </filter>
+        <filter xpath="(not(get-property('uri.var.lat') = '' or (not(string(get-property('uri.var.lat'))))))">
+            <then>
+                <property name="uri.var.lat" expression="$func:lat" />
+            </then>
+        </filter>
+        <filter xpath="(not(get-property('uri.var.lon') = '' or (not(string(get-property('uri.var.lon'))))))">
+            <then>
+                <property name="uri.var.lon" expression="$func:lon" />
+            </then>
+        </filter>
+
         <property name="uri.var.access_token" expression="$func:access_token" />
         <header name="Content-Type" value="application/x-www-form-urlencoded" scope="transport"/>
         <property name="messageType" value="application/x-www-form-urlencoded" scope="axis2" />
@@ -15,13 +30,15 @@
             <format>
                 <xform>
                     <name>$1</name>
-                    <lat>$2</lat>
-                    <lon>$3</lon>
-                    <access_token>$4</access_token>
+                    <description>$2</description>
+                    <lat>$3</lat>
+                    <lon>$4</lon>
+                    <access_token>$5</access_token>
                 </xform>
             </format>
             <args>
                 <arg expression="$func:name" />
+                <arg expression="$func:description" />
                 <arg expression="$func:lat" />
                 <arg expression="$func:lon" />
                 <arg expression="$func:access_token" />

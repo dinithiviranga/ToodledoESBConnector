@@ -1,8 +1,14 @@
 <template name="addingContext" xmlns="http://ws.apache.org/ns/synapse">
-    <parameter name="name"  />
-    <parameter name="access_token" />
+    <parameter name="name" description="name of a context" />
+    <parameter name="private" description=" A boolean value (0 or 1) that describes if this context can be shared. A value of 1 means that this context is private" />
+    <!--<parameter name="access_token" description="The token to access the backend services"/>-->
     <sequence>
         <property name="uri.var.name" expression="$func:name" />
+        <filter xpath="(not(get-property('uri.var.private') = '' or (not(string(get-property('uri.var.private'))))))">
+            <then>
+                <property name="uri.var.private" expression="$func:private" />
+            </then>
+        </filter>
         <property name="uri.var.access_token" expression="$func:access_token" />
         <header name="Content-Type" value="application/x-www-form-urlencoded" scope="transport"/>
         <property name="messageType" value="application/x-www-form-urlencoded" scope="axis2" />
@@ -11,11 +17,13 @@
             <format>
                 <xform>
                     <name>$1</name>
-                    <access_token>$2</access_token>
+                    <private>$2</private>
+                    <access_token>$3</access_token>
                 </xform>
             </format>
             <args>
                 <arg expression="$func:name" />
+                <arg expression="$func:private" />
                 <arg expression="$func:access_token" />
             </args>
         </payloadFactory>

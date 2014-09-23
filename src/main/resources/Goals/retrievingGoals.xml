@@ -12,15 +12,15 @@
                           expression="fn:get-property('uri.var.access_token')"/>
             </then>
         </filter>
-        <payloadFactory media-type="xml">
-            <format>
-                <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
-                    <soapenv:Header/>
-                    <soapenv:Body/>
-                </soapenv:Envelope>
-            </format>
-            <args/>
-        </payloadFactory>
+        <!--<payloadFactory media-type="xml">-->
+            <!--<format>-->
+                <!--<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">-->
+                    <!--<soapenv:Header/>-->
+                    <!--<soapenv:Body/>-->
+                <!--</soapenv:Envelope>-->
+            <!--</format>-->
+            <!--<args/>-->
+        <!--</payloadFactory>-->
         <call>
             <endpoint>
                 <http method="GET"

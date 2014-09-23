@@ -63,10 +63,16 @@
 
         <filter source="$axis2:HTTP_SC" regex="[2][0][0]">
             <then>
-                <property name="access_token" expression="json-eval($.access_token)" />
+                <property name="access_token" expression="json-eval($.access_token)"/>
+                <property name="refresh_token" expression="json-eval($.refresh_token)"/>
+                <!--<header name="custom"-->
+                        <!--expression="fn:get-property('accessToken')"-->
+                        <!--scope="transport"/>-->
             </then>
         </filter>
-
+        <log level="custom">
+            <property name="access_token" expression="json-eval($.access_token)" />
+        </log>
         <!-- Remove response custom header information
         <header name="x-li-format" scope="transport" action="remove" />
         <header name="X-LI-UUID" scope="transport" action="remove" />
