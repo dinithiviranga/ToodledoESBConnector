@@ -4,7 +4,7 @@
     <property name="secret"/>
 
     <sequence>
-        <property name="access_token" expression="$func:access_token" />
+        <!--<property name="access_token" expression="$func:access_token" />-->
         <property expression="$func:clientId" name="toodleDo.clientId" type="STRING" />
         <property expression="$func:secret" name="toodleDo.secret" type="STRING" />
 

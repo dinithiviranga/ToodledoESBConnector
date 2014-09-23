@@ -2,5 +2,16 @@
 <connector>
     <component name="ToodleDo" package="org.wso2.esb.connector" >
         <dependency component="Folders"/>
+        <dependency component="Context"/>
+        <dependency component="Location"/>
+        <dependency component="Goals"/>
+        <dependency component="Notes"/>
+        <dependency component="Authorization"/>
+        <dependency component="Tasks"/>
+        <dependency component="Lists"/>
+        <dependency component="Rows"/>
+        <dependency component="Outlines"/>
+
     </component>
+    <icon>icon/icon-twitter-small.png</icon>
 </connector>
