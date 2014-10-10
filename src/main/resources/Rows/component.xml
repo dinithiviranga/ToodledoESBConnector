@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="Rows" type="synapse/template">
+    <subComponents>
+        <component name="addingRows">
+            <file>addingRows.xml</file>
+            <description>Adding Rows to the toodledo</description>
+        </component>
+        <component name="editingRows">
+            <file>editingRows.xml</file>
+            <description>Editing Rows from the toodledo</description>
+        </component>
+        <component name="deletingRows">
+            <file>deletingRows.xml</file>
+            <description>Deleting Rows from the toodledo</description>
+        </component>
+        <component name="retrievingRows">
+            <file>retrievingRows.xml</file>
+            <description>Retrieving Rows from the toodledo</description>
+        </component>
+    </subComponents>
+</component>
