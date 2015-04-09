@@ -1,14 +1,14 @@
 <template name="addingTasks" xmlns="http://ws.apache.org/ns/synapse">
-    <parameter name="access_token" />
-    <parameter name="tasks"  />
-    <parameter name="fields"  />
+    <parameter name="access_token"/>
+    <parameter name="tasks"/>
+    <parameter name="fields"/>
     <sequence>
-        <property name="uri.var.access_token" expression="$func:access_token" />
-        <property name="uri.var.tasks" expression="$func:tasks" />
-        <property name="uri.var.fields" expression="$func:fields" />
+        <property name="uri.var.access_token" expression="$func:access_token"/>
+        <property name="uri.var.tasks" expression="$func:tasks"/>
+        <property name="uri.var.fields" expression="$func:fields"/>
 
         <header name="Content-Type" value="application/x-www-form-urlencoded" scope="transport"/>
-        <property name="messageType" value="application/x-www-form-urlencoded" scope="axis2" />
+        <property name="messageType" value="application/x-www-form-urlencoded" scope="axis2"/>
 
         <payloadFactory>
             <format>
@@ -19,16 +19,16 @@
                 </xform>
             </format>
             <args>
-                <arg expression="$func:access_token" />
-                <arg expression="$func:tasks" />
-                <arg expression="$func:fields" />
+                <arg expression="$func:access_token"/>
+                <arg expression="$func:tasks"/>
+                <arg expression="$func:fields"/>
             </args>
         </payloadFactory>
 
         <call>
             <endpoint>
                 <http method="post"
-                      uri-template="http://api.toodledo.com/3/tasks/add.php" />
+                      uri-template="http://api.toodledo.com/3/tasks/add.php"/>
             </endpoint>
         </call>
     </sequence>

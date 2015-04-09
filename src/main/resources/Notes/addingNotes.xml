@@ -1,14 +1,14 @@
 <template name="addingNotes" xmlns="http://ws.apache.org/ns/synapse">
-    <parameter name="access_token" />
-    <parameter name="notes"  />
+    <parameter name="access_token"/>
+    <parameter name="notes"/>
 
     <sequence>
-        <property name="uri.var.access_token" expression="$func:access_token" />
-        <property name="uri.var.notes" expression="$func:notes" />
+        <property name="uri.var.access_token" expression="$func:access_token"/>
+        <property name="uri.var.notes" expression="$func:notes"/>
 
 
         <header name="Content-Type" value="application/x-www-form-urlencoded" scope="transport"/>
-        <property name="messageType" value="application/x-www-form-urlencoded" scope="axis2" />
+        <property name="messageType" value="application/x-www-form-urlencoded" scope="axis2"/>
 
 
         <payloadFactory>
@@ -19,15 +19,15 @@
                 </xform>
             </format>
             <args>
-                <arg expression="$func:access_token" />
-                <arg expression="$func:notes" />
+                <arg expression="$func:access_token"/>
+                <arg expression="$func:notes"/>
             </args>
         </payloadFactory>
 
         <call>
             <endpoint>
                 <http method="post"
-                      uri-template="http://api.toodledo.com/3/notes/add.php" />
+                      uri-template="http://api.toodledo.com/3/notes/add.php"/>
             </endpoint>
         </call>
     </sequence>

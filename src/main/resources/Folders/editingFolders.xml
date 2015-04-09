@@ -1,27 +1,27 @@
 <template name="editingFolders" xmlns="http://ws.apache.org/ns/synapse">
-    <parameter name="id"  />
-    <parameter name="name"  />
-    <parameter name="private"  />
-    <parameter name="archived"  />
-    <parameter name="access_token" />
+    <parameter name="id"/>
+    <parameter name="name"/>
+    <parameter name="private"/>
+    <parameter name="archived"/>
+    <parameter name="access_token"/>
     <sequence>
         <!--Mandatory parameters-->
-        <property name="uri.var.id" expression="$func:id" />
-        <property name="uri.var.name" expression="$func:name" />
-        <property name="uri.var.access_token" expression="$func:access_token" />
+        <property name="uri.var.id" expression="$func:id"/>
+        <property name="uri.var.name" expression="$func:name"/>
+        <property name="uri.var.access_token" expression="$func:access_token"/>
 
         <header name="Content-Type" value="application/x-www-form-urlencoded" scope="transport"/>
-        <property name="messageType" value="application/x-www-form-urlencoded" scope="axis2" />
+        <property name="messageType" value="application/x-www-form-urlencoded" scope="axis2"/>
 
         <!--Optional parameters-->
         <filter xpath="(not(get-property('uri.var.private') = ''))">
             <then>
-                <property name="uri.var.private" expression="$func:private" />
+                <property name="uri.var.private" expression="$func:private"/>
             </then>
         </filter>
         <filter xpath="(not(get-property('uri.var.archived') = ''))">
             <then>
-                <property name="uri.var.archived" expression="$func:archived" />
+                <property name="uri.var.archived" expression="$func:archived"/>
             </then>
         </filter>
 
@@ -36,17 +36,17 @@
                 </xform>
             </format>
             <args>
-                <arg expression="$func:id" />
-                <arg expression="$func:name" />
-                <arg expression="$func:private" />
-                <arg expression="$func:archived" />
-                <arg expression="$func:access_token" />
+                <arg expression="$func:id"/>
+                <arg expression="$func:name"/>
+                <arg expression="$func:private"/>
+                <arg expression="$func:archived"/>
+                <arg expression="$func:access_token"/>
             </args>
         </payloadFactory>
         <call>
             <endpoint>
                 <http method="post"
-                      uri-template="http://api.toodledo.com/3/folders/edit.php" />
+                      uri-template="http://api.toodledo.com/3/folders/edit.php"/>
             </endpoint>
         </call>
     </sequence>

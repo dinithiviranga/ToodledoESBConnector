@@ -3,36 +3,37 @@
     <!-- Required parameters -->
 
     <parameter name="refresh_token"
-               description="The authorization code that your got from the authorization step." />
+               description="The authorization code that your got from the authorization step."/>
 
     <!-- Optional parameters -->
     <parameter name="vers"
-               description="An integer representing the version number of your application.." />
+               description="An integer representing the version number of your application.."/>
     <parameter name="os"
-               description="A text string identifying the device or platform that your application runs on." />
+               description="A text string identifying the device or platform that your application runs on."/>
     <parameter name="device"
-               description="An integer identifying the operating system version number of the device or platform that your application runs on." />
+               description="An integer identifying the operating system version number of the device or platform that your application runs on."/>
 
-    <parameter name="clientId" />
-    <parameter name="secret" />
+    <parameter name="clientId"/>
+    <parameter name="secret"/>
 
     <sequence>
-        <header name="Content-Type" value="application/x-www-form-urlencoded" scope="transport" />
+        <header name="Content-Type" value="application/x-www-form-urlencoded" scope="transport"/>
 
-        <property expression="$func:clientId" name="toodleDo.clientId" type="STRING" />
-        <property expression="$func:secret" name="toodleDo.secret" type="STRING" />
+        <property expression="$func:clientId" name="toodleDo.clientId" type="STRING"/>
+        <property expression="$func:secret" name="toodleDo.secret" type="STRING"/>
 
-        <property name="temp" expression="fn:concat('toodleTest',':','api5405f1d602ce5')" />
-        <property name="Authorization" expression="fn:concat('Basic ', base64Encode(get-property('temp')))" scope="transport"  />
+        <property name="temp" expression="fn:concat('toodleTest',':','api5405f1d602ce5')"/>
+        <property name="Authorization" expression="fn:concat('Basic ', base64Encode(get-property('temp')))"
+                  scope="transport"/>
 
 
-        <property name="messageType" value="application/x-www-form-urlencoded" scope="axis2" />
-        <property name="DISABLE_CHUNKING" value="true" scope="axis2" />
+        <property name="messageType" value="application/x-www-form-urlencoded" scope="axis2"/>
+        <property name="DISABLE_CHUNKING" value="true" scope="axis2"/>
 
-        <property name="uri.var.refresh_token" expression="$func:refresh_token" />
-        <property name="uri.var.vers" expression="$func:vers" />
-        <property name="uri.var.os" expression="$func:os" />
-        <property name="uri.var.device" expression="$func:device" />
+        <property name="uri.var.refresh_token" expression="$func:refresh_token"/>
+        <property name="uri.var.vers" expression="$func:vers"/>
+        <property name="uri.var.os" expression="$func:os"/>
+        <property name="uri.var.device" expression="$func:device"/>
 
         <payloadFactory media-type="xml">
             <format>
@@ -46,26 +47,27 @@
             </format>
 
             <args>
-                <arg expression="get-property('uri.var.refresh_token')" />
-                <arg expression="get-property('uri.var.vers')" />
-                <arg expression="get-property('uri.var.os')" />
-                <arg expression="get-property('uri.var.device')" />
+                <arg expression="get-property('uri.var.refresh_token')"/>
+                <arg expression="get-property('uri.var.vers')"/>
+                <arg expression="get-property('uri.var.os')"/>
+                <arg expression="get-property('uri.var.device')"/>
             </args>
         </payloadFactory>
 
         <call>
             <endpoint>
-                <http method="post" uri-template="https://api.toodledo.com/3/account/token.php" />
+                <http method="post" uri-template="https://api.toodledo.com/3/account/token.php"/>
             </endpoint>
         </call>
 
         <filter source="$axis2:HTTP_SC" regex="[2][0][0]">
             <then>
-                <property name="uri.var.access_token" expression="json-eval($.access_token)" />
-                <property name="uri.var.refresh_token" expression="json-eval($.refresh_token)" />
-                <header name="Authorization" expression="fn:concat('Bearer ',get-property('access_token'))" scope="transport" />
-                <property name="access_token" expression="json-eval($.access_token)" />
-                <property name="refresh_token" expression="json-eval($.refresh_token)" />
+                <property name="uri.var.access_token" expression="json-eval($.access_token)"/>
+                <property name="uri.var.refresh_token" expression="json-eval($.refresh_token)"/>
+                <header name="Authorization" expression="fn:concat('Bearer ',get-property('access_token'))"
+                        scope="transport"/>
+                <property name="access_token" expression="json-eval($.access_token)"/>
+                <property name="refresh_token" expression="json-eval($.refresh_token)"/>
                 <!--<header name="Authorization" expression="fn:concat('Bearer ',get-property('access_token'))" scope="transport" />-->
             </then>
         </filter>

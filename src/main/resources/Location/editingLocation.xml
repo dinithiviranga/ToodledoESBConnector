@@ -1,36 +1,36 @@
 <template name="editingLocation" xmlns="http://ws.apache.org/ns/synapse">
-    <parameter name="id" description="Id of a location" />
-    <parameter name="name" description="Location/editingLocation.xml:3" />
+    <parameter name="id" description="Id of a location"/>
+    <parameter name="name" description="Location/editingLocation.xml:3"/>
     <parameter name="description" description="A brief description of a location"/>
     <parameter name="lat" description="the latitude of a location"/>
     <parameter name="lon" description="the longitude of a location"/>
-    <parameter name="access_token" description="The token to access the backend services" />
+    <parameter name="access_token" description="The token to access the backend services"/>
     <sequence>
-        <property name="uri.var.id" expression="$func:id" />
+        <property name="uri.var.id" expression="$func:id"/>
         <filter xpath="(not(get-property('uri.var.private') = '' or (not(string(get-property('uri.var.private'))))))">
             <then>
-                <property name="uri.var.name" expression="$func:name" />
+                <property name="uri.var.name" expression="$func:name"/>
             </then>
         </filter>
         <filter xpath="(not(get-property('uri.var.description') = '' or (not(string(get-property('uri.var.description'))))))">
             <then>
-                <property name="uri.var.description" expression="$func:description" />
+                <property name="uri.var.description" expression="$func:description"/>
             </then>
         </filter>
         <filter xpath="(not(get-property('uri.var.lat') = '' or (not(string(get-property('uri.var.lat'))))))">
             <then>
-                <property name="uri.var.lat" expression="$func:lat" />
+                <property name="uri.var.lat" expression="$func:lat"/>
             </then>
         </filter>
         <filter xpath="(not(get-property('uri.var.lon') = '' or (not(string(get-property('uri.var.lon'))))))">
             <then>
-                <property name="uri.var.lon" expression="$func:lon" />
+                <property name="uri.var.lon" expression="$func:lon"/>
             </then>
         </filter>
 
-        <property name="uri.var.access_token" expression="$func:access_token" />
+        <property name="uri.var.access_token" expression="$func:access_token"/>
         <header name="Content-Type" value="application/x-www-form-urlencoded" scope="transport"/>
-        <property name="messageType" value="application/x-www-form-urlencoded" scope="axis2" />
+        <property name="messageType" value="application/x-www-form-urlencoded" scope="axis2"/>
 
         <payloadFactory media-type="xml">
             <format>
@@ -44,18 +44,18 @@
                 </xform>
             </format>
             <args>
-                <arg expression="$func:id" />
-                <arg expression="$func:name" />
-                <arg expression="$func:description" />
-                <arg expression="$func:lat" />
-                <arg expression="$func:lon" />
-                <arg expression="$func:access_token" />
+                <arg expression="$func:id"/>
+                <arg expression="$func:name"/>
+                <arg expression="$func:description"/>
+                <arg expression="$func:lat"/>
+                <arg expression="$func:lon"/>
+                <arg expression="$func:access_token"/>
             </args>
         </payloadFactory>
         <call>
             <endpoint>
                 <http method="post"
-                      uri-template="http://api.toodledo.com/3/locations/edit.php" />
+                      uri-template="http://api.toodledo.com/3/locations/edit.php"/>
             </endpoint>
         </call>
     </sequence>

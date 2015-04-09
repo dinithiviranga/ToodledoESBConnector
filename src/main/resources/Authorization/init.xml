@@ -4,8 +4,8 @@
         <property name="access_token" expression="$func:access_token"/>
         <property name="refresh_token" expression="$func:refresh_token"/>
         <!--<property name="access_token" expression="$func:access_token" />-->
-        <property expression="$func:clientId" name="toodleDo.clientId" type="STRING" />
-        <property expression="$func:secret" name="toodleDo.secret" type="STRING" />
+        <property expression="$func:clientId" name="toodleDo.clientId" type="STRING"/>
+        <property expression="$func:secret" name="toodleDo.secret" type="STRING"/>
 
         <!-- Build the authorization header to authorize the request -->
         <header name="Authorization" expression="fn:concat('Bearer ',get-property('access_token'))"

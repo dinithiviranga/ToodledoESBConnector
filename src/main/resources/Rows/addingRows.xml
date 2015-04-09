@@ -1,14 +1,14 @@
 <template name="addingRows" xmlns="http://ws.apache.org/ns/synapse">
-    <parameter name="access_token" />
-    <parameter name="rows"  />
+    <parameter name="access_token"/>
+    <parameter name="rows"/>
 
     <sequence>
-        <property name="uri.var.access_token" expression="$func:access_token" />
-        <property name="uri.var.rows" expression="$func:rows" />
+        <property name="uri.var.access_token" expression="$func:access_token"/>
+        <property name="uri.var.rows" expression="$func:rows"/>
 
 
         <header name="Content-Type" value="application/x-www-form-urlencoded" scope="transport"/>
-        <property name="messageType" value="application/x-www-form-urlencoded" scope="axis2" />
+        <property name="messageType" value="application/x-www-form-urlencoded" scope="axis2"/>
 
 
         <payloadFactory>
@@ -20,8 +20,8 @@
                 </xform>
             </format>
             <args>
-                <arg expression="$func:access_token" />
-                <arg expression="$func:rows" />
+                <arg expression="$func:access_token"/>
+                <arg expression="$func:rows"/>
 
             </args>
         </payloadFactory>
@@ -29,7 +29,7 @@
         <call>
             <endpoint>
                 <http method="post"
-                      uri-template="http://api.toodledo.com/3/rows/add.php" />
+                      uri-template="http://api.toodledo.com/3/rows/add.php"/>
             </endpoint>
         </call>
     </sequence>
