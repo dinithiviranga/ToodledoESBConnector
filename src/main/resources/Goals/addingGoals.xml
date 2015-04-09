@@ -1,10 +1,12 @@
 <template name="addingGoals" xmlns="http://ws.apache.org/ns/synapse">
-    <parameter name="name"/>
-    <parameter name="level"/>
-    <parameter name="contributes"/>
-    <parameter name="private"/>
-    <parameter name="note"/>
-    <parameter name="access_token"/>
+
+    <parameter name="name" description="Name of the goal"/>
+    <parameter name="level" description="The integer 0, 1 or 2 specifying the level. The default is 0. (0=lifetime, 1=long-term, 2=short-term)"/>
+    <parameter name="contributes" description="The id number for the higher level goal that this goal contributes to. If you send an invalid id, it will be reset to 0"/>
+    <parameter name="private" description="A boolean value (0 or 1) that describes if this goal can be shared. A value of 1 means that this goal is private."/>
+    <parameter name="note" description=" A text string up to 32k bytes."/>
+    <parameter name="access_token" description="The token to access the backend services"/>
+
     <sequence>
         <property name="uri.var.name" expression="$func:name"/>
         <property name="uri.var.access_token" expression="$func:access_token"/>

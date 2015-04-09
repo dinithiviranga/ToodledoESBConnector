@@ -1,7 +1,7 @@
 <template name="addingTasks" xmlns="http://ws.apache.org/ns/synapse">
-    <parameter name="access_token"/>
-    <parameter name="tasks"/>
-    <parameter name="fields"/>
+    <parameter name="access_token" description="The token to access the backend services"/>
+    <parameter name="tasks" description="Json object of tasks"/>
+    <parameter name="fields" description="A comma separated list of optional fields that you want returned."/>
     <sequence>
         <property name="uri.var.access_token" expression="$func:access_token"/>
         <property name="uri.var.tasks" expression="$func:tasks"/>

@@ -1,4 +1,5 @@
 <template name="deletingLocation" xmlns="http://ws.apache.org/ns/synapse">
+
     <parameter name="id" description="Id of a Location"/>
     <parameter name="access_token" description="The token to access the backend services"/>
     <sequence>

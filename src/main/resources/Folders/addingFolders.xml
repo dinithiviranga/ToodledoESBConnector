@@ -1,6 +1,7 @@
 <template name="addingFolders" xmlns="http://ws.apache.org/ns/synapse">
-    <parameter name="name"/>
-    <parameter name="access_token"/>
+
+    <parameter name="name" description="Name of the folder" />
+    <parameter name="access_token" description="The token to access the backend services"/>
     <sequence>
         <property name="uri.var.name" expression="$func:name"/>
         <property name="uri.var.access_token" expression="$func:access_token"/>

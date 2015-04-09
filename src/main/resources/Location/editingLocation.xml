@@ -1,9 +1,10 @@
 <template name="editingLocation" xmlns="http://ws.apache.org/ns/synapse">
+
     <parameter name="id" description="Id of a location"/>
-    <parameter name="name" description="Location/editingLocation.xml:3"/>
+    <parameter name="name" description="Name of the location"/>
     <parameter name="description" description="A brief description of a location"/>
-    <parameter name="lat" description="the latitude of a location"/>
-    <parameter name="lon" description="the longitude of a location"/>
+    <parameter name="lat" description="The latitude of a location"/>
+    <parameter name="lon" description="The longitude of a location"/>
     <parameter name="access_token" description="The token to access the backend services"/>
     <sequence>
         <property name="uri.var.id" expression="$func:id"/>

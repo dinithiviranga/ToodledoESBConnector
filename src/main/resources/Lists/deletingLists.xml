@@ -1,6 +1,7 @@
 <template name="deletingLists" xmlns="http://ws.apache.org/ns/synapse">
-    <parameter name="access_token"/>
-    <parameter name="lists"/>
+
+    <parameter name="access_token" description="The token to access the backend services"/>
+    <parameter name="lists" description="Json object of lists"/>
 
     <sequence>
         <property name="uri.var.access_token" expression="$func:access_token"/>

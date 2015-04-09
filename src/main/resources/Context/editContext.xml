@@ -1,6 +1,7 @@
 <template name="editContext" xmlns="http://ws.apache.org/ns/synapse">
+
     <parameter name="id" description="Id of a context"/>
-    <parameter name="name" description="name of a context"/>
+    <parameter name="name" description="Name of a context"/>
     <parameter name="private"
                description="A boolean value (0 or 1) that describes if this context can be shared. A value of 1 means that this context is private"/>
     <parameter name="access_token" description="The token to access the backend services"/>

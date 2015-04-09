@@ -1,6 +1,6 @@
 <template name="deletingRows" xmlns="http://ws.apache.org/ns/synapse">
-    <parameter name="access_token"/>
-    <parameter name="rows"/>
+    <parameter name="access_token" description="The token to access the backend services"/>
+    <parameter name="rows" description="Json object of rows"/>
     <sequence>
         <property name="uri.var.access_token" expression="$func:access_token"/>
         <property name="uri.var.rows" expression="$func:rows"/>

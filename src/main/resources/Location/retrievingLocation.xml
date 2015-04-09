@@ -5,16 +5,6 @@
     <sequence>
         <property name="uri.var.access_token" expression="$func:access_token"/>
 
-
-        <!--<payloadFactory media-type="xml">-->
-        <!--<format>-->
-        <!--<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">-->
-        <!--<soapenv:Header/>-->
-        <!--<soapenv:Body/>-->
-        <!--</soapenv:Envelope>-->
-        <!--</format>-->
-        <!--<args/>-->
-        <!--</payloadFactory>-->
         <call>
             <endpoint>
                 <http method="GET"

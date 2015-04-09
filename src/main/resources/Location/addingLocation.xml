@@ -1,8 +1,9 @@
 <template name="addingLocation" xmlns="http://ws.apache.org/ns/synapse">
+
     <parameter name="name" description="name of a location"/>
     <parameter name="description" description="A brief description of a location"/>
-    <parameter name="lat" description="the latitude of a location"/>
-    <parameter name="lon" description="the longitude of a location"/>
+    <parameter name="lat" description="The latitude of a location"/>
+    <parameter name="lon" description="The longitude of a location"/>
     <parameter name="access_token" description="The token to access the backend services"/>
     <sequence>
         <property name="uri.var.name" expression="$func:name"/>

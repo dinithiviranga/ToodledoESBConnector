@@ -61,17 +61,6 @@
             </then>
         </filter>
 
-
-        <!--<payloadFactory media-type="xml">-->
-        <!--<format>-->
-        <!--<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">-->
-        <!--<soapenv:Header/>-->
-        <!--<soapenv:Body/>-->
-        <!--</soapenv:Envelope>-->
-        <!--</format>-->
-        <!--<args/>-->
-        <!--</payloadFactory>-->
-
         <log level="custom">
             <property name="apiParameter=" expression="get-property('uri.var.apiParameter')"/>
         </log>

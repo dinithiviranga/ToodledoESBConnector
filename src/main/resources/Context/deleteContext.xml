@@ -1,5 +1,8 @@
 <template name="deleteContext" xmlns="http://ws.apache.org/ns/synapse">
+
+    <!-- Id of the context -->
     <parameter name="id" description="Id of a context"/>
+    <!-- Access token -->
     <parameter name="access_token" description="The token to access the backend services"/>
     <sequence>
         <property name="uri.var.id" expression="$func:id"/>

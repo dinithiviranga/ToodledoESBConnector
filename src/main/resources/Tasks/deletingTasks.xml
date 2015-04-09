@@ -1,6 +1,6 @@
 <template name="deletingTasks" xmlns="http://ws.apache.org/ns/synapse">
-    <parameter name="access_token"/>
-    <parameter name="tasks"/>
+    <parameter name="access_token" description="The token to access the backend services"/>
+    <parameter name="tasks" description="Json object of tasks"/>
     <sequence>
         <property name="uri.var.access_token" expression="$func:access_token"/>
         <property name="uri.var.tasks" expression="$func:tasks"/>

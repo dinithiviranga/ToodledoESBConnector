@@ -1,8 +1,9 @@
 <template name="addingContext" xmlns="http://ws.apache.org/ns/synapse">
+
+    <!-- Name of the context -->
     <parameter name="name" description="name of a context"/>
     <parameter name="private"
                description=" A boolean value (0 or 1) that describes if this context can be shared. A value of 1 means that this context is private"/>
-    <!--<parameter name="access_token" description="The token to access the backend services"/>-->
     <sequence>
         <property name="uri.var.name" expression="$func:name"/>
         <filter xpath="(not(get-property('uri.var.private') = '' or (not(string(get-property('uri.var.private'))))))">

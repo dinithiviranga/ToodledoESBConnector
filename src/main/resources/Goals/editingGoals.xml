@@ -1,12 +1,13 @@
 <template name="editingGoals" xmlns="http://ws.apache.org/ns/synapse">
-    <parameter name="id"/>
-    <parameter name="name"/>
-    <parameter name="level"/>
-    <parameter name="contributes"/>
-    <parameter name="archived"/>
-    <parameter name="private"/>
-    <parameter name="note"/>
-    <parameter name="access_token"/>
+
+    <parameter name="id" description="Id of the goal"/>
+    <parameter name="name" description="Name of the goal"/>
+    <parameter name="level" description="The integer 0, 1 or 2 specifying the level. The default is 0. (0=lifetime, 1=long-term, 2=short-term)"/>
+    <parameter name="contributes" description="The id number returned for the higher level goal that this goal contributes to."/>
+    <parameter name="archived" description="A boolean value (0 or 1) that describes if this goal is archived."/>
+    <parameter name="private" description="A boolean value (0 or 1) that describes if this goal can be shared. A value of 1 means that this goal is private."/>
+    <parameter name="note" description="A text string up to 32k bytes."/>
+    <parameter name="access_token" description="The token to access the backend services"/>
     <sequence>
         <property name="uri.var.id" expression="$func:id"/>
         <property name="uri.var.name" expression="$func:name"/>

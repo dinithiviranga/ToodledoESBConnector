@@ -1,9 +1,10 @@
 <template xmlns="http://ws.apache.org/ns/synapse" name="init">
     <parameter name="accessToken" description="Access Token for the OAuth Authorization."/>
     <sequence>
+        <!-- Access token -->
         <property name="access_token" expression="$func:access_token"/>
+        <!-- Refresh token -->
         <property name="refresh_token" expression="$func:refresh_token"/>
-        <!--<property name="access_token" expression="$func:access_token" />-->
         <property expression="$func:clientId" name="toodleDo.clientId" type="STRING"/>
         <property expression="$func:secret" name="toodleDo.secret" type="STRING"/>
 

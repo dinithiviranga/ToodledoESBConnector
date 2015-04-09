@@ -1,7 +1,6 @@
 <template name="refreshToken" xmlns="http://ws.apache.org/ns/synapse">
 
     <!-- Required parameters -->
-
     <parameter name="refresh_token"
                description="The authorization code that your got from the authorization step."/>
 
@@ -68,7 +67,6 @@
                         scope="transport"/>
                 <property name="access_token" expression="json-eval($.access_token)"/>
                 <property name="refresh_token" expression="json-eval($.refresh_token)"/>
-                <!--<header name="Authorization" expression="fn:concat('Bearer ',get-property('access_token'))" scope="transport" />-->
             </then>
         </filter>
 
@@ -76,16 +74,6 @@
             <property name="access_token_refresh: " expression="get-property('uri.var.access_token')"/>
             <property name="access_token_refresh: " expression="get-property('uri.var.refresh_token')"/>
         </log>
-
-
-        <!-- Remove response custom header information
-        <header name="x-li-format" scope="transport" action="remove" />
-        <header name="X-LI-UUID" scope="transport" action="remove" />
-        <header name="X-Li-Pop" scope="transport" action="remove" />
-        <header name="X-Li-Fabric" scope="transport" action="remove" />
-        <header name="x-li-request-id" scope="transport" action="remove" />
-        <header name="P3P" scope="transport" action="remove" />
-        <header name="Set-Cookie" scope="transport" action="remove" />-->
 
     </sequence>
 </template>
